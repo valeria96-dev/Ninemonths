@@ -1,0 +1,6 @@
+{
+  "tool": "Built-in ImageGen",
+  "asset": "public/images/skin-sculpture.webp",
+  "prompt": "Use case: stylized-concept. Asset type: premium pregnancy skincare web app hero illustration, vertical portrait 4:5. A sophisticated sculptural 3D clay bust of an adult Latina woman with warm terracotta skin, facing perfectly forward, eyes gently closed, serene neutral expression, full face clearly visible, dark brown hair swept back, bare shoulders, no jewelry. Minimal sculptural realism, tactile fine matte ceramic finish with natural subtle skin variation, not cartoon, not glossy plastic. Tight head and shoulders crop, face centered at 50% x and 42% y, symmetrical composition. Soft lavender studio backdrop #e8dff0 with a pale luminous circular halo behind head. Beautiful warm side light balanced by soft fill, refined wellness editorial art direction, plum shadow accents. Facial skin should have very subtle darker pigmentation on cheeks, tasteful and realistic. No text, UI, graphics, charts, overlays, watermarks, extra objects. This will be the human focus of a modern skincare analysis graphic with programmatic scanning overlay added separately.",
+  "optimization": "800 \u00d7 1000, WebP quality 86, 75112 bytes"
+}

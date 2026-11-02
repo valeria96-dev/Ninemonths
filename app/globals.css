@@ -1,0 +1,502 @@
+@import "tailwindcss";
+
+/* Ninemonths design system — structure modelled on getclearapp.com: DM Sans, charcoal
+   ink on a soft grey canvas, one confident brand colour, pill buttons, accent
+   words in brand italic, three pastel tints and an accent dot. Light only.
+   Palettes are swapped with data-theme on <html> (see /variantes). */
+:root {
+  color-scheme: light;
+
+  --surface: #ffffff;
+  --surface-muted: #f4f2f6;
+  --line: #e9e5ee;
+  --ink: #3b3b3b;
+  --ink-2: #6e6874;
+  --ink-3: #9d97a3;
+
+  --safe: #12805f;
+  --safe-tint: #e3f6ee;
+  --caution: #a2600a;
+  --caution-tint: #fff4dc;
+  --avoid: #d2453c;
+  --avoid-tint: #ffeceb;
+
+  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+
+  /* Palette (default: Lavanda). Every theme below overrides only these. */
+  --canvas: #f7f5fa;
+  --brand: #7b61d1;
+  --brand-bright: #a08cf0;
+  --brand-deep: #5b44a8;
+  --brand-tint: #f1edfc;
+  --lilac: #fff1f5;
+  --peach: #fff7ea;
+  --coral: #ef86a6;
+  --tint-1: #f4f0fe; --tint-1-line: #e2d9fb;
+  --tint-2: #fff1f5; --tint-2-line: #f8d6e2;
+  --tint-3: #fff8ec; --tint-3-line: #f5e4c3;
+  --orb-1: #f9d3e0;
+  --orb-2: #e3d9fb;
+  --band: #f2eefc;
+  --band-line: #e2d9fb;
+}
+[data-theme="lavanda"] {
+  --canvas: #f7f5fa;
+  --brand: #7b61d1;
+  --brand-bright: #a08cf0;
+  --brand-deep: #5b44a8;
+  --brand-tint: #f1edfc;
+  --lilac: #fff1f5;
+  --peach: #fff7ea;
+  --coral: #ef86a6;
+  --tint-1: #f4f0fe; --tint-1-line: #e2d9fb;
+  --tint-2: #fff1f5; --tint-2-line: #f8d6e2;
+  --tint-3: #fff8ec; --tint-3-line: #f5e4c3;
+  --orb-1: #f9d3e0;
+  --orb-2: #e3d9fb;
+  --band: #f2eefc;
+  --band-line: #e2d9fb;
+}
+[data-theme="rosa"] {
+  --canvas: #faf6f7;
+  --brand: #c4577e;
+  --brand-bright: #e28aa9;
+  --brand-deep: #9c3e62;
+  --brand-tint: #fcedf3;
+  --lilac: #f4effc;
+  --peach: #fff6ee;
+  --coral: #9a86e0;
+  --tint-1: #fdf0f4; --tint-1-line: #f6d5e0;
+  --tint-2: #f4effc; --tint-2-line: #e1d6f6;
+  --tint-3: #fff6ee; --tint-3-line: #f4dfc8;
+  --orb-1: #f7cfdc;
+  --orb-2: #e3d9f7;
+  --band: #fbeff3;
+  --band-line: #f6d5e0;
+}
+[data-theme="malva"] {
+  --canvas: #f8f5f8;
+  --brand: #9b5ba5;
+  --brand-bright: #c08bc9;
+  --brand-deep: #74407d;
+  --brand-tint: #f6eef8;
+  --lilac: #fff0f3;
+  --peach: #f1f4fd;
+  --coral: #f2949f;
+  --tint-1: #f7eff9; --tint-1-line: #e8d4ec;
+  --tint-2: #fff0f3; --tint-2-line: #f8d3dc;
+  --tint-3: #f1f4fd; --tint-3-line: #d9e1f7;
+  --orb-1: #f4cfd9;
+  --orb-2: #e6d3ec;
+  --band: #f6eef8;
+  --band-line: #e8d4ec;
+}
+[data-theme="lila"] {
+  --canvas: #f7f6f9;
+  --brand: #6e56cf;
+  --brand-bright: #9583e8;
+  --brand-deep: #4e3a9e;
+  --brand-tint: #efebfc;
+  --lilac: #fff1ea;
+  --peach: #ffeff4;
+  --coral: #f59e7e;
+  --tint-1: #efebfc; --tint-1-line: #dcd3f8;
+  --tint-2: #fff1ea; --tint-2-line: #fad8c6;
+  --tint-3: #ffeff4; --tint-3-line: #f8d2df;
+  --orb-1: #fcd9c9;
+  --orb-2: #f8d2df;
+  --band: #efebfc;
+  --band-line: #dcd3f8;
+}
+:root, [data-theme] {
+  --g-action: linear-gradient(var(--brand), var(--brand));
+  --g-spectral: linear-gradient(140deg, var(--tint-1) 0%, var(--tint-2) 55%, var(--tint-3) 100%);
+  --g-deep: linear-gradient(150deg, var(--brand) 0%, var(--brand-deep) 100%);
+  --g-prism: var(--g-spectral);
+  --ring: color-mix(in srgb, var(--brand) 16%, transparent);
+  --glow: color-mix(in srgb, var(--brand) 12%, transparent);
+  --sh-surface: 0 6px 22px rgba(59, 59, 59, 0.06);
+  --sh-float: 0 22px 45px rgba(59, 59, 59, 0.14);
+  --sh-luminous: 0 8px 22px color-mix(in srgb, var(--brand) 30%, transparent);
+  --sh-dialog: 0 30px 90px rgba(30, 30, 30, 0.22);
+}
+
+@theme inline {
+  --color-canvas: var(--canvas);
+  --color-surface: var(--surface);
+  --color-surface-muted: var(--surface-muted);
+  --color-line: var(--line);
+  --color-ink: var(--ink);
+  --color-ink-2: var(--ink-2);
+  --color-ink-3: var(--ink-3);
+  --color-brand: var(--brand);
+  --color-brand-bright: var(--brand-bright);
+  --color-brand-deep: var(--brand-deep);
+  --color-brand-tint: var(--brand-tint);
+  --color-lilac: var(--lilac);
+  --color-peach: var(--peach);
+  --color-coral: var(--coral);
+  --color-safe: var(--safe);
+  --color-safe-tint: var(--safe-tint);
+  --color-caution: var(--caution);
+  --color-caution-tint: var(--caution-tint);
+  --color-avoid: var(--avoid);
+  --color-avoid-tint: var(--avoid-tint);
+  --font-sans: var(--font-body);
+}
+
+body {
+  background: var(--canvas);
+  color: var(--ink);
+  font-family: var(--font-body), system-ui, sans-serif;
+  font-size: 15px;
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1,
+h2,
+h3,
+button,
+.font-display {
+  font-family: var(--font-display), var(--font-body), sans-serif;
+  letter-spacing: -0.02em;
+}
+
+:focus-visible {
+  outline: 2px solid var(--brand);
+  outline-offset: 2px;
+}
+
+/* Component classes live in the components layer so Tailwind utilities
+   (bg-*, text-*, border-*) can still override them per use. */
+@layer components {
+/* ── Type ─────────────────────────────────────────────────────────────── */
+.eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--ink);
+}
+.eyebrow-dot::before {
+  content: "";
+  width: 6px;
+  height: 6px;
+  border-radius: 999px;
+  background: var(--coral);
+}
+.title {
+  font-family: var(--font-display), sans-serif;
+  font-weight: 700;
+  font-size: clamp(1.9rem, 3.2vw, 2.6rem);
+  line-height: 1.04;
+  letter-spacing: -0.045em;
+}
+/* Clear's signature: the key words in blue italic. */
+.mark {
+  color: var(--brand);
+  font-style: italic;
+}
+
+/* ── Surfaces ─────────────────────────────────────────────────────────── */
+.card {
+  background: var(--surface);
+  border: 1px solid rgba(59, 59, 59, 0.06);
+  border-radius: 22px;
+  box-shadow: var(--sh-surface);
+}
+.card-tap {
+  transition: transform 0.28s var(--ease-out), box-shadow 0.28s var(--ease-out);
+}
+.card-tap:hover {
+  transform: translateY(-3px);
+  box-shadow: var(--sh-float);
+}
+.card-tap:active {
+  transform: scale(0.992);
+}
+.spectral {
+  background: var(--g-spectral);
+}
+.tint-1 { background: var(--tint-1); border-color: var(--tint-1-line) !important; }
+.tint-2 { background: var(--tint-2); border-color: var(--tint-2-line) !important; }
+.tint-3 { background: var(--tint-3); border-color: var(--tint-3-line) !important; }
+.deep {
+  background: var(--g-deep);
+  color: #fff;
+}
+.icon-tile {
+  display: grid;
+  place-items: center;
+  width: 44px;
+  height: 44px;
+  border-radius: 999px;
+  background: var(--brand-tint);
+  color: var(--brand);
+  flex: none;
+}
+.icon-tile svg {
+  width: 20px;
+  height: 20px;
+}
+.num {
+  display: grid;
+  place-items: center;
+  width: 32px;
+  height: 32px;
+  border-radius: 999px;
+  background: #fff;
+  color: var(--brand);
+  font-size: 12px;
+  font-weight: 700;
+  box-shadow: 0 5px 14px var(--ring);
+  flex: none;
+}
+
+/* ── Buttons ──────────────────────────────────────────────────────────── */
+.btn {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  min-height: 48px;
+  padding: 0 22px;
+  border-radius: 999px;
+  font-size: 14px;
+  font-weight: 700;
+  transition: transform 0.14s ease-out, background 0.2s ease, box-shadow 0.2s ease;
+}
+.btn:active {
+  transform: scale(0.98);
+}
+.btn:disabled {
+  opacity: 0.45;
+  pointer-events: none;
+}
+.btn-primary {
+  color: #fff;
+  background: var(--brand);
+  box-shadow: var(--sh-luminous);
+}
+.btn-primary:hover {
+  background: var(--brand-deep);
+}
+.btn-deep {
+  color: #fff;
+  background: var(--ink);
+}
+.btn-deep:hover {
+  background: #2c2c2c;
+}
+.btn-ghost {
+  color: var(--ink);
+  background: var(--surface);
+  border: 1px solid var(--line);
+}
+.btn-ghost:hover {
+  background: var(--surface-muted);
+}
+.btn-sm {
+  min-height: 38px;
+  padding: 0 16px;
+  font-size: 13px;
+}
+.link-u {
+  font-weight: 700;
+  font-size: 13px;
+  padding-bottom: 3px;
+  border-bottom: 1.5px solid currentColor;
+}
+
+/* ── Inputs & chips ───────────────────────────────────────────────────── */
+.input {
+  width: 100%;
+  min-height: 50px;
+  padding: 0 16px;
+  border: 1px solid var(--line);
+  border-radius: 16px;
+  background: var(--surface);
+  color: var(--ink);
+  font-size: 16px;
+  transition: border-color 0.14s, box-shadow 0.14s;
+}
+textarea.input {
+  padding: 13px 16px;
+  line-height: 1.45;
+}
+.input:focus {
+  outline: none;
+  border-color: var(--brand);
+  box-shadow: 0 0 0 4px var(--ring);
+}
+.chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  min-height: 36px;
+  padding: 0 14px;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  background: var(--surface);
+  font-size: 12.5px;
+  font-weight: 600;
+  transition: background 0.14s, border-color 0.14s, transform 0.14s;
+}
+.chip:active {
+  transform: scale(0.97);
+}
+.chip[aria-pressed="true"] {
+  background: var(--brand);
+  border-color: var(--brand);
+  color: #fff;
+}
+.choice {
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  align-items: center;
+  gap: 12px;
+  width: 100%;
+  padding: 13px 14px;
+  border: 1px solid var(--line);
+  border-radius: 18px;
+  background: var(--surface);
+  text-align: left;
+  transition: border-color 0.14s, background 0.14s, transform 0.14s;
+}
+.choice:active {
+  transform: scale(0.992);
+}
+.choice[aria-pressed="true"] {
+  border-color: color-mix(in srgb, var(--brand) 55%, transparent);
+  background: var(--brand-tint);
+}
+.check {
+  width: 22px;
+  height: 22px;
+  border-radius: 999px;
+  border: 1.6px solid var(--line);
+  display: grid;
+  place-items: center;
+  color: #fff;
+}
+[aria-pressed="true"] .check {
+  background: var(--brand);
+  border-color: var(--brand);
+}
+
+/* ── Shell ────────────────────────────────────────────────────────────── */
+.glass-header {
+  background: color-mix(in srgb, var(--canvas) 82%, transparent);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+}
+.floating-nav {
+  background: rgba(255, 255, 255, 0.92);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+  border: 1px solid rgba(255, 255, 255, 0.82);
+  border-radius: 24px;
+  box-shadow: 0 12px 45px var(--ring), 0 2px 8px rgba(59, 59, 59, 0.06);
+}
+.glow {
+  position: fixed;
+  border-radius: 999px;
+  filter: blur(90px);
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* ── Motion ───────────────────────────────────────────────────────────── */
+@keyframes shine {
+  0%,
+  72% {
+    left: -35%;
+  }
+  100% {
+    left: 125%;
+  }
+}
+@keyframes page-in {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+}
+@keyframes rise {
+  from {
+    opacity: 0;
+    transform: translateY(18px);
+  }
+}
+@keyframes floaty {
+  50% {
+    transform: translateY(-8px);
+  }
+}
+@keyframes orbit {
+  to {
+    transform: rotate(360deg);
+  }
+}
+@keyframes pulse-ring {
+  0% {
+    box-shadow: 0 0 0 0 rgba(255, 255, 255, 0.6);
+  }
+  100% {
+    box-shadow: 0 0 0 10px rgba(255, 255, 255, 0);
+  }
+}
+.page-in {
+  animation: page-in 0.52s var(--ease-out) both;
+}
+.rise {
+  animation: rise 0.7s var(--ease-out) both;
+}
+.floaty {
+  animation: floaty 6s ease-in-out infinite;
+}
+.live-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 999px;
+  background: #fff;
+  animation: pulse-ring 1.8s infinite;
+}
+.grain::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  opacity: 0.06;
+  mix-blend-mode: overlay;
+  pointer-events: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+} /* end @layer components */
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation: none !important;
+    transition: none !important;
+  }
+}
+
+@media print {
+  .no-print {
+    display: none !important;
+  }
+  body {
+    background: #fff;
+  }
+  .card {
+    box-shadow: none;
+    border-color: #ddd;
+  }
+}
